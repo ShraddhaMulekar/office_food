@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -111,7 +111,7 @@ userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
   
   try {
-    const salt = await bcrypt.genSalt(12);
+    const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS || 8);
     this.password = await bcrypt.hash(this.password, salt);
     next();
   } catch (error) {
@@ -120,12 +120,12 @@ userSchema.pre('save', async function(next) {
 });
 
 // Method to compare password
-userSchema.methods.comparePassword = async function(candidatePassword) {
+userSchema.methods.comparePassword = async (candidatePassword) =>{
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
 // Method to get user info without sensitive data
-userSchema.methods.getPublicProfile = function() {
+userSchema.methods.getPublicProfile = () => {
   const userObject = this.toObject();
   delete userObject.password;
   delete userObject.fcmToken;
