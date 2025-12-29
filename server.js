@@ -14,12 +14,14 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users')
 const menuRoutes = require('./routes/menu')
 const orderRoutes = require('./routes/orders')
+const deliveryRoutes = require('./routes/delivery')
 
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/menu', menuRoutes)
 app.use('/api/orders', orderRoutes);
+app.use('/api/delivery', deliveryRoutes);
 
 
 // 404 handler

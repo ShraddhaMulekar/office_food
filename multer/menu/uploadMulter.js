@@ -1,6 +1,6 @@
 const multer = require("multer");
 const path = require('path');
-const { storageMulter } = require("./storageMulter");
+const { storageMulter } = require("../menu/storageMulter");
 
 const uploadMulter = multer({
   storage: storageMulter,
