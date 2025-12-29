@@ -17,6 +17,7 @@ const orderRoutes = require('./routes/orders')
 const deliveryRoutes = require('./routes/delivery')
 const adminRoutes = require('./routes/admin')
 const paymentRoutes = require('./routes/payments')
+const notificationRoutes = require('./routes/notifications')
 
 // API routes
 app.use('/api/auth', authRoutes);
@@ -26,6 +27,7 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/delivery', deliveryRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/payments', paymentRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 // 404 handler
 app.use(/.*/, (req, res) => {
