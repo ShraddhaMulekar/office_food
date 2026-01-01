@@ -1,4 +1,6 @@
-const singleMenuPage =async (req, res) => {
+const Menu = require('../../models/Menu');
+
+const singleMenuPage = async (req, res) => {
   try {
     const dish = await Menu.findById(req.params.id)
       .populate('createdBy', 'name');

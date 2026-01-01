@@ -1,3 +1,6 @@
+const { validationResult } = require('express-validator');
+const Menu = require('../../models/Menu');
+
 const publicMenuPage = async (req, res) => {
   try {
     const errors = validationResult(req);

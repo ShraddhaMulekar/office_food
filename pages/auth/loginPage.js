@@ -1,3 +1,7 @@
+const { validationResult } = require('express-validator');
+const User = require('../../models/User');
+const { generateToken } = require('../../utils/auth');
+
 const loginPage = async (req, res) => {
   try {
     // Check for validation errors
