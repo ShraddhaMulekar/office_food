@@ -10,7 +10,7 @@ const path = require('path');
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4001
 app.use(express.json())
 app.use(cors())
 
@@ -114,7 +114,7 @@ io.on('connection', (socket) => {
   socket.on('join-admin', () => {
     socket.join('admin-room');
     console.log('Admin joined admin room, socket ID:', socket.id);
-    
+
     // Log admin room clients
     const adminRoom = io.sockets.adapter.rooms.get('admin-room');
     console.log('Admin room clients after join:', adminRoom ? adminRoom.size : 0);
@@ -131,8 +131,8 @@ app.set('io', io);
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ 
-    success: false, 
+  res.status(500).json({
+    success: false,
     message: 'Something went wrong!',
     error: process.env.NODE_ENV === 'development' ? err.message : 'Internal server error'
   });
