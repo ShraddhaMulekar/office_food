@@ -4,52 +4,53 @@ const { generateToken } = require('../../utils/auth');
 
 const loginPage = async (req, res) => {
   try {
-    // Check for validation errors
+    // 1️⃣ Validate request
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
         success: false,
-        message: 'Validation errors',
         errors: errors.array()
       });
     }
 
     const { email, password } = req.body;
 
-    // Check if user exists
-    const user = await User.findByEmail(email).select('+password');
+    // 2️⃣ Find user + password
+    const user = await User.findOne({ email }).select('+password');
+
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'No account found with this email address. Please check your email or create a new account.'
+        message: 'Invalid email or password'
       });
     }
 
-    // Check if user is active
-    if (!user.isActive) {
+    // 3️⃣ Check if account is active
+    if (user.isActive === false) {
+      return res.status(403).json({
+        success: false,
+        message: 'Account is deactivated. Contact admin.'
+      });
+    }
+
+    // 4️⃣ Compare password
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
       return res.status(401).json({
         success: false,
-        message: 'Your account has been deactivated. Please contact the administrator for assistance.'
+        message: 'Invalid email or password'
       });
     }
 
-    // Check password
-    const isPasswordValid = await user.comparePassword(password);
-    if (!isPasswordValid) {
-      return res.status(401).json({
-        success: false,
-        message: 'Incorrect password. Please try again or use "Forgot Password" to reset your password.'
-      });
-    }
-
-    // Generate token
+    // 5️⃣ Generate JWT
     const token = generateToken(user._id);
 
-    // Update last login
+    // 6️⃣ Update last login
     user.lastLogin = new Date();
     await user.save();
 
-    res.json({
+    // 7️⃣ Send response
+    res.status(200).json({
       success: true,
       message: 'Login successful',
       data: {
@@ -57,13 +58,14 @@ const loginPage = async (req, res) => {
         token
       }
     });
+
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({
       success: false,
-      message: 'Server error during login. Please try again later.'
+      message: 'Server error during login'
     });
   }
-}
+};
 
 module.exports = { loginPage };
