@@ -1,0 +1,8 @@
+[31m✗[39m Build failed in 2.70s
+[31merror during build:
+[31mCould not resolve "./CartAnimations.css" from "src/pages/Cart.jsx"[31m
+file: [36mD:/Desktop/masai/Projects/FoodHub/client/src/pages/Cart.jsx[31m
+    at getRollupError (file:///D:/Desktop/masai/Projects/FoodHub/client/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///D:/Desktop/masai/Projects/FoodHub/client/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at ModuleLoader.handleInvalidResolvedId (file:///D:/Desktop/masai/Projects/FoodHub/client/node_modules/rollup/dist/es/shared/node-entry.js:21661:24)
+    at file:///D:/Desktop/masai/Projects/FoodHub/client/node_modules/rollup/dist/es/shared/node-entry.js:21621:26[39m
