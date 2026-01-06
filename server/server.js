@@ -23,7 +23,7 @@ const io = require('socket.io')(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
       ? 'https://yourdomain.com'
-      : 'http://localhost:3000',
+      : 'http://localhost:3001',
     methods: ['GET', 'POST'],
     credentials: true
   }
