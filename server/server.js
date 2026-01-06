@@ -22,7 +22,7 @@ const server = http.createServer(app)
 const io = require('socket.io')(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
-      ? 'https://localhost:3000'
+      ? 'https://shreenathlunch.vercel.app/menu'
       : 'http://localhost:3001',
     methods: ['GET', 'POST'],
     credentials: true
@@ -66,7 +66,7 @@ app.set('trust proxy', 1)
 // CORS Configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? 'https://localhost:3000' 
+    ? 'https://shreenathlunch.vercel.app/menu' 
     : 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   credentials: true
