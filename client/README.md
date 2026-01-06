@@ -1,16 +1,75 @@
-# React + Vite
+🚀 Live Demo
+https://shreenathlunch.vercel.app/menu
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##Frontend##
+✨ Features
 
-Currently, two official plugins are available:
+📱 Responsive design for all devices
+🍽️ Browse daily menu items
+🛒 Add items to cart
+👤 User authentication
+📦 Order history tracking
+💳 Multiple payment options
+🔔 Real-time order status updates
+🎨 Modern and intuitive UI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛠️ Tech Stack
 
-## React Compiler
+Framework: React
+Routing: React Router Dom
+State Management: Context API 
+Styling: CSS Modules / Tailwind CSS 
+HTTP Client: Axios
+Build Tool: Vite 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+📁 Project Structure
+frontend/
+├── public/
+│   ├── logo
+├── src/
+│   ├── components/
+│   │   ├── auth/
+|   |         |-- ProtenctedRoute
+│   │   ├── common/
+|   |         |-- LoadingSpinner
+│   │   └── layout/
+|   |         |-- AdminNotification
+|   |         |-- Footer
+|   |         |-- Navbar
+|   |         |-- PaymentModal
+|   |         |-- QrCodeGenerator
+|   |         |-- userNotification
+│   ├── pages/
+│   │   ├── admin
+|   |         |-- Analytics
+|   |         |-- Dashboard
+|   |         |-- Menu
+|   |         |-- Orders
+|   |         |-- Payments
+|   |         |-- Users
+│   │   ├── auth
+|   |         |-- ForgotPassword
+|   |         |-- Login
+|   |         |-- Register
+│   │   ├── delivery
+|   |         |-- Cart
+|   |         |-- Home
+|   |         |-- Menu
+|   |         |-- OrderDetails
+|   |         |-- Orders
+|   |         |-- Profile
+│   ├── context/
+│   │   ├── AuthContext
+│   │   └── SocketContext
+│   ├── utils/
+│   │   ├── api
+│   ├── App.jsx
+│   ├── index.jsx
+│   └── main.jsx
+├── .gitignore
+├── package.json
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+👥 Authors
+
+Shraddha Mulekar
